@@ -12,7 +12,7 @@ module RailsRiemannMiddleware
 
       @riemann_host    = options.fetch(:riemann_host, "127.0.0.1")
       @riemann_port    = options.fetch(:riemann_port, "5555")
-      @reporting_host  = options.fetch(:reporting_host, env['HTTP_HOST'])
+      @reporting_host  = options[:reporting_host]
       @send_durations  = options.fetch(:send_durations, true)
       @send_exceptions = options.fetch(:send_exceptions, true)
 
@@ -23,6 +23,8 @@ module RailsRiemannMiddleware
 
     def call(env)
       start_time = Time.now
+      @reporting_host = env['HTTP_HOST'] if reporting_host.nil?
+
       status, headers, body = @app.call(env)
 
       [status, headers, body]
