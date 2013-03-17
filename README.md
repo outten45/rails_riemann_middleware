@@ -1,6 +1,8 @@
 # RailsRiemannMiddleware
 
-TODO: Write a gem description
+A middleware to add to your rails application that sends request
+duration metrics and exception notifications to
+[Riemann](http://riemann.io/).
 
 ## Installation
 
@@ -18,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add the following to your specific rails enviroment.
+
+    config.middleware.use(RailsRiemannMiddleware::Notifier, 
+                          :riemann_host => "host_name")
+
 
 ## Contributing
 
