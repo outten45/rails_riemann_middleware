@@ -14,10 +14,10 @@ module RailsRiemannMiddleware
     def message
       msg = {
         :host        => env['HTTP_HOST'],
-        :service     => 'ims exception',
+        :service     => "#{event.app_prefix} exception".strip,
         :state       => 'error',
         :description => backtrace,
-        :tags        => "Exception,ims"
+        :tags        => "exception"
       }
       # ap msg
       msg

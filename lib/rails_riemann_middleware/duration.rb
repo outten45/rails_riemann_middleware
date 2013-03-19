@@ -18,10 +18,9 @@ module RailsRiemannMiddleware
       duration = (end_time - start_time)
       msg = {
         :host        => env['HTTP_HOST'],
-        :service     => 'ims request duration',
+        :service     => "#{event.app_prefix} request duration".strip,
         :state       => 'info',
         :metric      => duration,
-        :description => 'request duration',
         :tags        => "duration"
       }
       # ap msg

@@ -15,6 +15,10 @@ module RailsRiemannMiddleware
       client << {:time => time_for_client, :host => reporting_host}.merge(msg)
     end
 
+    def app_prefix
+      options.fetch(:app_prefix, "")
+    end
+
     private
 
     def time_for_client
