@@ -35,5 +35,10 @@ describe RailsRiemannMiddleware::Duration do
     result.size.must_equal 1
     result.first[:service].must_match /^TEST APP/
   end
+
+  it "should have a state of 'info'" do
+    d = RailsRiemannMiddleware::Duration.new(@event, @env, @start_time)
+    d.message[:state].must_equal "info"    
+  end
   
 end
