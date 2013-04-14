@@ -23,7 +23,7 @@ Or install it yourself as:
 Add the following to your specific rails enviroment.
 
     config.middleware.use(RailsRiemannMiddleware::Notifier, 
-                          :riemann_host => "host_name")
+                          :riemann_host => "riemann_host_name")
 
 
 ## Contributing

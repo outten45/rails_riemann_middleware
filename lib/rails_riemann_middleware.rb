@@ -20,11 +20,11 @@ module RailsRiemannMiddleware
       status, headers, body = @app.call(env)
       [status, headers, body]
     rescue Exception => exception
-      puts "--------------------------------------------------"
-      puts exception.to_s
-      puts "--------------------"
-      puts exception.backtrace
-      puts "--------------------------------------------------"
+      STDERR.puts "--------------------------------------------------"
+      STDERR.puts exception.to_s
+      STDERR.puts "--------------------"
+      STDERR.puts exception.backtrace
+      STDERR.puts "--------------------------------------------------"
       ExceptionNotification.new(event, env, exception).send if send_exceptions
       raise exception
     ensure
