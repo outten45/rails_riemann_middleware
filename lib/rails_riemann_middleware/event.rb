@@ -3,15 +3,17 @@ require 'riemann/client'
 module RailsRiemannMiddleware
 
   class Event
-    attr_reader :client, :options, :reporting_host
+    attr_reader :client, :options, :reporting_host, :tags
     
     def initialize(options)
       @options         = options
       @client          = create_riemann_client
       @reporting_host  = options[:reporting_host]
+      @tags            = options.fetch(:tags, [])
     end
 
     def <<(msg)
+      msg[:tags] += Array(tags)
       client << {:time => time_for_client, :host => reporting_host}.merge(msg)
     end
 

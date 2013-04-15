@@ -21,7 +21,7 @@ module RailsRiemannMiddleware
         :service     => "#{event.app_prefix} request duration".strip,
         :state       => 'info',
         :metric      => duration,
-        :tags        => "duration"
+        :tags        => ["duration"]
       }
       # ap msg
       msg

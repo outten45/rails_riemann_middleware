@@ -17,7 +17,7 @@ module RailsRiemannMiddleware
         :service     => "#{event.app_prefix} exception".strip,
         :state       => 'error',
         :description => backtrace,
-        :tags        => "exception"
+        :tags        => ["exception"]
       }
       # ap msg
       msg
