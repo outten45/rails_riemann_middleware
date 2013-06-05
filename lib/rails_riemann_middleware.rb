@@ -17,14 +17,8 @@ module RailsRiemannMiddleware
 
     def call(env)
       start_time = Time.now
-      status, headers, body = @app.call(env)
-      [status, headers, body]
+      @app.call(env)
     rescue Exception => exception
-      STDERR.puts "--------------------------------------------------"
-      STDERR.puts exception.to_s
-      STDERR.puts "--------------------"
-      STDERR.puts exception.backtrace
-      STDERR.puts "--------------------------------------------------"
       ExceptionNotification.new(event, env, exception).send if send_exceptions
       raise exception
     ensure
