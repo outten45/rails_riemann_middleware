@@ -10,11 +10,12 @@ module RailsRiemannMiddleware
       @client          = create_riemann_client
       @reporting_host  = options[:reporting_host]
       @tags            = options.fetch(:tags, [])
+      @attributes      = options.fetch(:attributes, {})
     end
 
     def <<(msg)
       msg[:tags] += Array(tags)
-      client << {:time => time_for_client, :host => reporting_host}.merge(msg)
+      client << {:time => time_for_client, :host => reporting_host}.merge(@attributes).merge(msg)
     end
 
     def app_prefix
