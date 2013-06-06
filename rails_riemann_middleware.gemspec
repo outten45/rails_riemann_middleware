@@ -15,6 +15,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = RailsRiemannMiddleware::VERSION
 
-  gem.add_dependency("riemann-client", "~> 0.0.8")
+  gem.add_dependency("riemann-client", "~> 0.2.0")
 
 end
