@@ -13,7 +13,7 @@ module RailsRiemannMiddleware
     
     def message
       msg = {
-        :host        => env['HTTP_HOST'],
+        :host        => env['SERVER_NAME'],
         :service     => "#{event.app_prefix} exception".strip,
         :state       => 'error',
         :description => backtrace,
