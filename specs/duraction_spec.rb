@@ -4,7 +4,7 @@ require 'awesome_print'
 require 'rails_riemann_middleware/duration'
 
 describe RailsRiemannMiddleware::Duration do
-  
+
   before do
     @start_time = Time.at(0)
     @env = {}
@@ -38,7 +38,7 @@ describe RailsRiemannMiddleware::Duration do
 
   it "should have a state of 'info'" do
     d = RailsRiemannMiddleware::Duration.new(@event, @env, @start_time)
-    d.message[:state].must_equal "info"    
+    d.message[:state].must_equal "info"
   end
-  
+
 end

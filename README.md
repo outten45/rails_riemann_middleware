@@ -25,6 +25,11 @@ Add the following to your specific rails enviroment.
     config.middleware.use(RailsRiemannMiddleware::Notifier, 
                           :riemann_host => "riemann_host_name")
 
+## Running Tests
+
+To run the tests use:
+
+    $ bundle exec rake test
 
 ## Contributing
 

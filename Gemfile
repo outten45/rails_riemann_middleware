@@ -1,9 +1,12 @@
 # -*- mode: Ruby; tab-width: 2; -*-
 source 'https://rubygems.org'
 
-gem "minitest", "~> 4.6.2"
-gem 'minitest-reporters'
-gem 'minitest-metadata'
+group :test do
+  gem "minitest", "~> 4.6.2"
+  gem 'minitest-reporters', "~> 0.14.7"
+  gem 'minitest-metadata', "~> 0.2.0"
+end
+
 gem "rake"
 gem "awesome_print"
 
