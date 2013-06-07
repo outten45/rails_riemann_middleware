@@ -7,7 +7,7 @@ module RailsRiemannMiddleware
 
   class Notifier
     attr_reader :event, :send_durations, :send_exceptions
-    
+
     def initialize(app, options = {})
       @app, @options = app, options
       @send_durations  = options.fetch(:send_durations, true)
