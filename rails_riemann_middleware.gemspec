@@ -3,7 +3,7 @@ require File.expand_path('../lib/rails_riemann_middleware/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Richard Outten"]
-  gem.email         = ["outtenr@gmail.com"]
+  gem.email         = ["engineering@crashlytics.com"]
   gem.description   = %q{Rack middleware for sending data to riemann}
   gem.summary       = %q{Rack middleware for sending data to riemann}
   gem.homepage      = ""
@@ -16,5 +16,4 @@ Gem::Specification.new do |gem|
   gem.version       = RailsRiemannMiddleware::VERSION
 
   gem.add_dependency("riemann-client", "~> 0.2.0")
-
 end

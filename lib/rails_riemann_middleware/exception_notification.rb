@@ -1,5 +1,6 @@
+require 'socket'
+
 module RailsRiemannMiddleware
-  
   class ExceptionNotification
     attr_reader :event, :env, :exception
     
@@ -13,13 +14,13 @@ module RailsRiemannMiddleware
     
     def message
       msg = {
-        :host        => env['SERVER_NAME'],
+        :host        => Socket.gethostname,
         :service     => "#{event.app_prefix} exception".strip,
         :state       => 'error',
         :description => backtrace,
-        :tags        => ["exception"]
+        :tags        => ['exception'],
+        :group       => exception.class,
       }
-      # ap msg
       msg
     end
 
