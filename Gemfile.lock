@@ -1,0 +1,43 @@
+PATH
+  remote: .
+  specs:
+    crashlytics_rails_riemann_middleware (0.2.0)
+      riemann-client (~> 0.2.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ansi (1.4.3)
+    awesome_print (1.1.0)
+    beefcake (0.3.7)
+    builder (3.2.2)
+    hashie (2.0.5)
+    minitest (4.6.2)
+    minitest-metadata (0.3.0)
+      minitest (>= 2.12)
+    minitest-reporters (0.14.20)
+      ansi
+      builder
+      minitest (>= 2.12, < 5.0)
+      powerbar
+    mtrc (0.0.4)
+    powerbar (1.0.11)
+      ansi (~> 1.4.0)
+      hashie (>= 1.1.0)
+    rake (10.0.4)
+    riemann-client (0.2.2)
+      beefcake (>= 0.3.5)
+      mtrc (>= 0.0.4)
+      trollop (>= 1.16.2)
+    trollop (2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  awesome_print
+  crashlytics_rails_riemann_middleware!
+  minitest (~> 4.6.2)
+  minitest-metadata
+  minitest-reporters
+  rake
