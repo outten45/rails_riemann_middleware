@@ -1,4 +1,4 @@
-require 'riemann/client'
+require "rails_riemann_middleware/headers"
 
 module RailsRiemannMiddleware
 
@@ -21,9 +21,9 @@ module RailsRiemannMiddleware
         :service     => "#{event.app_prefix} request duration".strip,
         :state       => 'info',
         :metric      => duration,
-        :tags        => ["duration"]
+        :tags        => ["duration"],
+        :description => Headers.new(env).to_s
       }
-      # ap msg
       msg
     end
 

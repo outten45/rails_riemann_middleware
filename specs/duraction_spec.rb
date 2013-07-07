@@ -41,4 +41,16 @@ describe RailsRiemannMiddleware::Duration do
     d.message[:state].must_equal "info"
   end
 
+  it "should have the REQUEST_METHOD in the description" do
+    @env["REQUEST_METHOD"] = "POST"
+    d = RailsRiemannMiddleware::Duration.new(@event, @env, @start_time)
+    d.message[:description].must_match /request_method: POST/
+  end
+
+  it "should have the REQUEST_URI in the description" do
+    @env["REQUEST_URI"] = "/this/is/uri"
+    d = RailsRiemannMiddleware::Duration.new(@event, @env, @start_time)
+    d.message[:description].must_match /request_uri: \/this\/is\/uri/
+  end
+  
 end
