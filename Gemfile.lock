@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    crashlytics_rails_riemann_middleware (0.2.0)
+    crashlytics_rails_riemann_middleware (0.3.0)
       riemann-client (~> 0.2.0)
 
 GEM
