@@ -20,6 +20,7 @@ module RailsRiemannMiddleware
         :description => backtrace,
         :tags        => ['exception'],
         :group       => exception.class,
+        :request_id   => env['X-Request-Id']
       }
       msg
     end
