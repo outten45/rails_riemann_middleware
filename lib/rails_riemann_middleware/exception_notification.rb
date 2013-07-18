@@ -30,7 +30,6 @@ module RailsRiemannMiddleware
     def backtrace
       e = "#{exception.to_s}\n"
       e << exception.backtrace.join("\n")
-      e[0..8000]
     end
     
   end
