@@ -25,6 +25,16 @@ module RailsRiemannMiddleware
       Duration.new(event, env, start_time).send if send_durations
     end
 
+    def self.exception_notification(env, exception)
+      event = Event.new
+      ExceptionNotification.new(event, env, exception)
+    end
+
+    def self.background_exception_notification(exception)
+      event = Event.new
+      env = {}
+      ExceptionNotification.new(event, env, exception)
+    end
   end
 
 end
