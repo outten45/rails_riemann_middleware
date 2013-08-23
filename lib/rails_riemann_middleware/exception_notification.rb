@@ -13,6 +13,10 @@ module RailsRiemannMiddleware
       event << message
     end
 
+    def deliver
+      send
+    end
+
     def message
       msg = {
         :host        => env['HTTP_HOST'],
