@@ -5,7 +5,7 @@ module RailsRiemannMiddleware
   class Event
     attr_reader :client, :options, :reporting_host, :tags
     
-    def initialize(options)
+    def initialize(options={})
       @options         = options
       @client          = create_riemann_client
       @reporting_host  = options[:reporting_host]
