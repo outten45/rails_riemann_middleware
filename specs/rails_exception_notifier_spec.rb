@@ -1,8 +1,27 @@
 require_relative 'spec_helper'
 require 'rails_riemann_middleware'
+require 'rails_riemann_middleware/rails_exception_notifier'
+
+class DummyAppConfig
+  def riemann_options
+    {}
+  end
+end
+
+class DummyApplication
+  def config
+    DummyAppConfig.new
+  end
+end
+
+module Rails
+  def self.application
+    DummyApplication.new
+  end
+end
 
 module RailsRiemannMiddleware
-  describe Notifier do
+  describe RailsExceptionNotifier do
     let(:exception_notification_new) { MiniTest::Mock.new }
     let(:error) { Object.new }
 
@@ -15,7 +34,7 @@ module RailsRiemannMiddleware
         end
 
         ExceptionNotification.stub(:new, exception_notification_new) do
-          Notifier.exception_notification(env, error)
+          RailsExceptionNotifier.exception_notification(env, error)
         end
         exception_notification_new.verify
       end
@@ -28,7 +47,7 @@ module RailsRiemannMiddleware
         end
 
         ExceptionNotification.stub(:new, exception_notification_new) do
-          Notifier.background_exception_notification(error)
+          RailsExceptionNotifier.background_exception_notification(error)
         end
         exception_notification_new.verify
       end

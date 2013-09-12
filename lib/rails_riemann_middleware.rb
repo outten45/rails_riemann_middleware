@@ -6,7 +6,7 @@ require "rails_riemann_middleware/exception_notification"
 module RailsRiemannMiddleware
 
   class Notifier
-    attr_reader :event, :send_durations, :send_exceptions
+    attr_reader :event, :send_durations, :send_exceptions, :options
 
     def initialize(app, options = {})
       @app, @options = app, options
@@ -19,22 +19,10 @@ module RailsRiemannMiddleware
       start_time = Time.now
       @app.call(env)
     rescue Exception => exception
-      ExceptionNotification.new(event, env, exception).send if send_exceptions
+      ExceptionNotification.new(event, env, exception, options).send if send_exceptions
       raise exception
     ensure
-      Duration.new(event, env, start_time).send if send_durations
-    end
-
-    def self.exception_notification(env, exception)
-      event = Event.new
-      ExceptionNotification.new(event, env, exception)
-    end
-
-    def self.background_exception_notification(exception)
-      event = Event.new
-      env = {}
-      ExceptionNotification.new(event, env, exception)
+      Duration.new(event, env, start_time, options).send if send_durations
     end
   end
-
 end
