@@ -21,6 +21,7 @@ Or install it yourself as:
 ## Usage
 
 Add the following to your specific rails enviroment.
+
     config.riemann_options = (:riemann_host => "riemann_host_name")
 
     config.middleware.use(RailsRiemannMiddleware::Notifier, 
