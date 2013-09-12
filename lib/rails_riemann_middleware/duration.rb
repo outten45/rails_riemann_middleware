@@ -3,10 +3,11 @@ require "rails_riemann_middleware/headers"
 module RailsRiemannMiddleware
 
   class Duration
-    attr_reader :event, :env, :start_time
+    attr_reader :event, :env, :start_time, :headers
     
-    def initialize(event, env, start_time)
+    def initialize(event, env, start_time, options={})
       @event, @env, @start_time = event, env, start_time
+      @headers = options.fetch(:headers, [])
     end
 
     def send
@@ -22,7 +23,7 @@ module RailsRiemannMiddleware
         :state       => 'info',
         :metric      => duration,
         :tags        => ["duration"],
-        :description => Headers.new(env).to_s
+        :description => Headers.new(env, headers).to_s
       }
       msg
     end
