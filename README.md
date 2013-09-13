@@ -47,7 +47,7 @@ call:
 
 In your models or other background processes, you can call:
 
-   RailsRiemannMiddleware::RailsExceptionNotifier.background_exception_notification(error) 
+    RailsRiemannMiddleware::RailsExceptionNotifier.background_exception_notification(error) 
 
 To use this extra functionality, you have to
 
